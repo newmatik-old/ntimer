@@ -7,6 +7,9 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
+// Ethernet
+#include <Ethernet2.h>
+
 // Libraries required for RFID
 #include <SPI.h>
 #include <MFRC522.h>
@@ -15,8 +18,8 @@
 #include <HttpClient.h>
 
 // Pin definition for RFID reader
-#define SS_PIN 10 // SDA on Pin 10 
-#define RST_PIN 9 // RST on Pin 9
+#define SS_PIN 9 // SDA on Pin 10 for Uno, 9 for Mega
+#define RST_PIN 8 // RST on Pin 9 for Uno, 8 for Mega
 
 // Buttons and their pins on the board
 const int startButtonPin = 2;
@@ -25,6 +28,11 @@ const int buzzerPin = 4;
 
 const String softwareVersion = "0.0.1";
 
+// Ethernet Configuration
+const byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+const byte ip[] = { 10, 0, 0, 177 };
+
+// RFID and LCD Configuration
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Creating and naming RFID reader
 LiquidCrystal_I2C lcd(0x27, 20, 4); // Address 0x27, 20 characters in 4 lines
 
@@ -36,23 +44,33 @@ int timeout = 30;
 // Constructor
 void setup() 
 {
-  // initialize the pushbutton pins as an input
+  // initialize the pushbutton pins as an input, buzzer as output
   pinMode(startButtonPin, INPUT);
   pinMode(stopButtonPin, INPUT);
   pinMode(buzzerPin, OUTPUT);
-  
-  lcd.init();  //initialize the lcd
-  clearScreen();
-  lcd.backlight();  //turn the backlight on
 
-  Serial.begin(9600); // Open serial connection for debugging monitor
-  SPI.begin(); // Create new SPI connection
-  mfrc522.PCD_Init(); // Initialize the RDIF reader
-  
-  Serial.println("Initialized"); // debugging statement
+  Serial.begin(9600);
+  Serial.println("Opening serial connection for debugging monitor");
+  Serial.println("Software version: " + softwareVersion);
+
+  Serial.println("Initializing and clearing LCD display, turning backlight on");
+  lcd.init();
+  clearScreen();
+  lcd.backlight();
+
+  Serial.println("Turning on ethernet");
+  Ethernet.begin(mac, ip); 
+  Serial.println("Local IP is: " + Ethernet.localIP());
+
+  Serial.println("Opening SPI and Initializing RFID reader");
+  SPI.begin(); 
+  mfrc522.PCD_Init();
 
   startupscreen();
+  
   login();
+
+  Serial.println("Initialization completed"); // debugging statement
 }
 
 void buzzTone(int frequency, int duration){
@@ -74,7 +92,7 @@ void startupscreen(){
   lcd.setCursor ( 0, 2 ); // go to the third row
   lcd.print("Version: " + softwareVersion); // pad with spaces for centering
   lcd.setCursor ( 0, 3 ); // go to the fourth row
-  lcd.print("... STARTING UP ...");
+  lcd.print("IP: " + Ethernet.localIP());
   delay(1000);
   
   clearScreen();
