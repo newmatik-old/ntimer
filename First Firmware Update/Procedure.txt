@@ -1,0 +1,19 @@
+1) Open the software in Atmega_Board_Programmer and proggramming the target board using Arduino IDE. For this if you have Arduino UNO chose this, compile the software, open the serial terminal and connect any of both target ICs(ATMEGA2560 and ATMEGA16U2).
+
+
+IMPORTANT between the two boards is necessary to put a 1K resistors because the arduino is 5V and the target 3,3V.
+
+ MISO = 1  2 = NC
+ SCK  = 3  4 = MOSI
+ RESET= 5  6 = GND
+
+ Reset in programming side is in PIN10 of Arduino UNO -> in target board in pin 5
+ If use Arduino UNO, connect in the bottom connector no in the pins 11, 12 and 13.
+ http://www.gammon.com.au/forum/?id=11635
+ https://www.arduino.cc/en/Hacking/DFUProgramming8U2
+
+2) Install the Flip Installer
+
+3) Load the Arduino-usbserial-mega.hex connecting the USB and resseting the USB device https://github.com/NicoHood/Hoodloader#flashing-new-firmware-with-dfu-and-flip
+
+4) Format SD card as FAT32 and put the config file ntimer.txt on there

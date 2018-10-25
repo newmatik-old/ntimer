@@ -1,0 +1,25 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Ntimer.PcbDoc   5/8/2018  16:14:34
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Ntimer.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      12mil (0.3mm)                                             Round             18        PTH        6.87inch (174.61mm)
+T2      16mil (0.399mm)                                           Round             182       PTH        41.34inch (1050.06mm)
+T3      24mil (0.599mm)                                           Round             21        PTH        0.43inch (11.04mm)
+T4      32mil (0.8mm)                                             Round             24        PTH        4.39inch (111.55mm)
+T5      35mil (0.889mm)                                           Round             4         PTH        0.54inch (13.64mm)
+T6      35mil (0.899mm)                                           Round             20        PTH        8.31inch (211.19mm)
+T7      39mil (1.001mm)                                           Round             8         PTH        3.11inch (79.00mm)
+T8      63mil (1.6mm)                                             Round             2         PTH        0.61inch (15.55mm)
+T9      71mil (1.801mm)                                           Round             2         PTH        0.33inch (8.50mm)
+T10     98mil (2.499mm)                                           Round             4         PTH        6.42inch (163.10mm)
+T11     128mil (3.251mm)                                          Round             6         PTH        13.74inch (348.98mm)
+T12     128mil (3.251mm)                                          Round             2         NPTH       0.45inch (11.43mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              293
+
+Total Processing Time (hh:mm:ss) : 00:00:01

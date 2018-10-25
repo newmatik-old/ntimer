@@ -1,0 +1,39 @@
+# Newmatik Ntimer Configuration File
+
+## Network configuration
+
+// DHCP will try to get IP address lease (0 = disabled, 1 = enabled)
+// If no lease possible use fallback IP, DNS and GATEWAY
+
+DHCP = 1
+
+// Fallback IP configuration or manual configuration if DHCP disabled
+
+// Is necessary to maintain each field with 3 numbers, for example
+// for putting 10.15.0.25 -> 010.015.000.025
+
+IP = 192.168.100.025
+DNS = 192.168.100.001
+GATEWAY = 192.168.100.001
+
+## Server configuration
+
+SERVER = staging.newmatik.com
+SECRET = 909c8df0e367b13
+KEY = f24f86282a17c86
+
+## Update configuration
+
+// if new software version available at ntimer.newmatik.com suggest
+// update during system reboot (0 = disabled, 1 = enabled)
+// This functionality is not implemented yet
+
+ONLINE_UPDATE = 0
+
+// If new software version available on SD card
+// update during system reboot (0 = disabled, 1 = enabled)
+// This functionality is not implemented yet
+
+SD_UPDATE = 1
+
+# END OF FILE (do not remove this)
